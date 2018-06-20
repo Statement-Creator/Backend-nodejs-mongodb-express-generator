@@ -1,0 +1,35 @@
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-light-grey w3-collapse w3-top" style="z-index:3;width:260px" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
+    <h3>Back-end Generator</h3>
+    <hr>
+    <form #frm>
+      <p><label>MongoDB db name</label></p>
+      <input class="w3-input w3-border" type="text" required #dbName placeholder="testDB">          
+      <p><label>Port </label></p>
+      <input class="w3-input w3-border" type="text" required #port placeholder="3000">
+      <p><label>Model</label></p>
+      <input class="w3-input w3-border" type="text" placeholder="Model Name" required #modelName placeholder="Item">
+      <input class="textarea" type="textarea" placeholder="Model Name:{property:{type:String,required:true}}" #modelProperties>
+      <p><label>CRUD ROUTES</label></p>
+      <p><label>POST</label></p>
+      <input class="w3-input w3-border" type="text" placeholder="/url" #postRoute >
+      <p><label>GET</label></p>
+      <input class="w3-input w3-border" type="text" placeholder="/url" #getRoute >
+      <p><label>DELETE</label></p>
+      <input class="w3-input w3-border" type="text" placeholder="/url" #deleteRoute >
+      <input class="textarea" type="textarea" placeholder="Name:req.body.name" #queryDelete >
+      <p><button type="button" class="w3-button w3-block w3-green w3-left-align" (click)="generateScript(dbName.value,port.value,modelName.value,postRoute.value,getRoute.value,deleteRoute.value,queryDelete.value,modelProperties.value)"> Generate script</button></p>
+    </form>
+  </div>
+</nav>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-white" style="margin-left:260px">
+<h1>Server.js</h1>
+<p>{{serverText}}</p>
+<h1>Routes/Routes.js</h1>
+<p>{{routesText}}</p>
+<h1>Models/{{modelFileTitle}}</h1>
+<p>{{modelsText}}</p>
+</div>
